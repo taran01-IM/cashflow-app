@@ -9,6 +9,7 @@ import { Dashboard } from './pages/Dashboard.jsx';
 import { BanksPage } from './pages/Banks.jsx';
 import { InflowPage, OutflowPage } from './pages/Flows.jsx';
 import { ReportsPage, SettingsPage } from './pages/Reports.jsx';
+import { UsersPage } from './pages/Users.jsx';
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "dark": false,
@@ -140,6 +141,7 @@ export default function App() {
     { id: 'inflow',    icon: 'inflow',    label: t('nav_inflow') },
     { id: 'outflow',   icon: 'outflow',   label: t('nav_outflow') },
     { id: 'reports',   icon: 'reports',   label: t('nav_reports') },
+    ...(effectiveUser.role === 'Admin' ? [{ id: 'users', icon: 'user', label: 'Users' }] : []),
     { id: 'settings',  icon: 'settings',  label: t('nav_settings') },
   ];
 
@@ -230,6 +232,7 @@ export default function App() {
           {page === 'inflow' && <InflowPage store={store} setStore={setStore} currentUnit={currentUnit} t={t} toast={pushToast} confirm={confirm} />}
           {page === 'outflow' && <OutflowPage store={store} setStore={setStore} currentUnit={currentUnit} t={t} toast={pushToast} confirm={confirm} />}
           {page === 'reports' && <ReportsPage store={store} currentUnit={currentUnit} t={t} />}
+          {page === 'users' && <UsersPage businessUnits={businessUnits} currentUser={effectiveUser} t={t} toast={pushToast} confirm={confirm} />}
           {page === 'settings' && <SettingsPage tweaks={tweaks} setTweak={setTweak} currentUser={effectiveUser} t={t} />}
         </main>
       </div>

@@ -46,4 +46,10 @@ export const api = {
   createOutflow: (data) => request('/api/outflows', { method: 'POST', body: data }),
   updateOutflow: (id, data) => request(`/api/outflows/${id}`, { method: 'PUT', body: data }),
   deleteOutflow: (id) => request(`/api/outflows/${id}`, { method: 'DELETE' }),
+
+  // users (admin only)
+  users: () => request('/api/users'),
+  createUser: (data) => request('/api/users', { method: 'POST', body: data }),
+  updateUser: (id, data) => request(`/api/users/${id}`, { method: 'PUT', body: data }),
+  deleteUser: (id) => request(`/api/users/${id}`, { method: 'DELETE' }),
 };
