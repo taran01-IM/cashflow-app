@@ -1,0 +1,17 @@
+{
+  "name": "cashflow-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multi-business cash flow management — Vercel + Neon (Postgres)",
+  "type": "module",
+  "workspaces": ["client"],
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "npm --workspace client run build",
+    "vercel-build": "npm --workspace client install && npm --workspace client run build"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
